@@ -797,6 +797,21 @@ country_event = {
 			}
 			CLN = { country_event = 302 }
 		}
+		any_country = {	# Do need to clean the setup tho
+			limit = {
+				OR = {
+					AND = {
+						has_country_flag = viewer
+						ai = yes
+					}
+					AND = { 
+						has_global_flag = debug
+						ai = yes
+					}
+				}
+			}
+			any_land_province = { has_province_modifier = due_for_slotting }
+		}
 	}
 	
 	option = {

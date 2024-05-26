@@ -1,0 +1,776 @@
+country_event = { # Arbitration CB Event for secedeing land to the Target
+    id = 20130
+    title = "Initiator Arbitration CB"
+    #desc = ""
+	allow_multiple_instances = yes
+    is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+        name = ""
+		any_country = {
+			limit = {
+				has_country_flag = scoped_for_dispute_choice
+			}
+			all_core = {
+				limit = {
+					owner = { has_country_flag = arbitration_initiator }
+				}
+				secede_province = THIS add_core = UTI 
+			}
+			THIS = { release = UTI UTI = { annex_to = UTI all_core = { remove_core = UTI } } }
+			inherit = UTI
+		}
+		CLN = { country_event = 20140 } # Main Cleanup
+    }
+}
+
+country_event = { # Arbitration CB Event for secedeing land to the Initiator
+    id = 20131
+    title = "Arbtree Arbitration CB"
+    #desc = ""
+	allow_multiple_instances = yes
+    is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+        name = ""
+		any_country = {
+			limit = {
+				has_country_flag = arbitration_initiator
+			}
+			all_core = {
+				limit = {
+					owner = { has_country_flag = scoped_for_dispute_choice }
+				}
+				secede_province = THIS add_core = UTI 
+			}
+			THIS = { release = UTI UTI = { annex_to = UTI all_core = { remove_core = UTI } } }
+			inherit = UTI
+		}
+		CLN = { country_event = 20140 } # Main Cleanup
+    }
+}
+
+country_event = { # Arbitration CB Event for secedeing land to an Autonomous State
+    id = 20132
+    title = "Auto Arbitration CB"
+    #desc = ""
+	allow_multiple_instances = yes
+    is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+        name = ""
+		any_country = {
+			limit = {
+				has_country_flag = autonomous_region
+			}
+			all_core = {
+				limit = {
+					owner = { has_country_flag = scoped_for_dispute_choice }
+					any_core = { has_country_flag = arbitration_initiator }
+				}
+				secede_province = THIS add_core = UTI 
+			}
+			THIS = {
+				any_country = {
+					limit = {
+						has_country_flag = arbitration_initiator
+					}
+					all_core = {
+						limit = {
+							owner = { has_country_flag = scoped_for_dispute_choice }
+						}
+						secede_province = THIS add_core = UTI 
+					}
+				}
+			}
+			THIS = { release = UTI UTI = { annex_to = UTI all_core = { remove_core = UTI } } }
+			inherit = UTI
+		}
+		CLN = { country_event = 20140 } # Main Cleanup
+    }
+}
+
+country_event = { # Renounce Core CB
+    id = 20133
+    title = "Renounce Cores CB"
+    #desc = ""
+	allow_multiple_instances = yes
+    is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+        name = ""
+		any_country = {
+			limit = {
+				has_country_flag = arbitration_initiator
+			}
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SER = { has_country_flag = arbitration_initiator } } } remove_core = SER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UTI = { has_country_flag = arbitration_initiator } } } remove_core = UTI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CLN = { has_country_flag = arbitration_initiator } } } remove_core = CLN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FCA = { has_country_flag = arbitration_initiator } } } remove_core = FCA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FWI = { has_country_flag = arbitration_initiator } } } remove_core = FWI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ULA = { has_country_flag = arbitration_initiator } } } remove_core = ULA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice EIC = { has_country_flag = arbitration_initiator } } } remove_core = EIC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OCC = { has_country_flag = arbitration_initiator } } } remove_core = OCC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ACA = { has_country_flag = arbitration_initiator } } } remove_core = ACA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BOR = { has_country_flag = arbitration_initiator } } } remove_core = BOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ATB = { has_country_flag = arbitration_initiator } } } remove_core = ATB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ADO = { has_country_flag = arbitration_initiator } } } remove_core = ADO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MNC = { has_country_flag = arbitration_initiator } } } remove_core = MNC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LIE = { has_country_flag = arbitration_initiator } } } remove_core = LIE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MST = { has_country_flag = arbitration_initiator } } } remove_core = MST }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SCL = { has_country_flag = arbitration_initiator } } } remove_core = SCL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice REU = { has_country_flag = arbitration_initiator } } } remove_core = REU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SWG = { has_country_flag = arbitration_initiator } } } remove_core = SWG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WLD = { has_country_flag = arbitration_initiator } } } remove_core = WLD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IMG = { has_country_flag = arbitration_initiator } } } remove_core = IMG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GIZ = { has_country_flag = arbitration_initiator } } } remove_core = GIZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LEG = { has_country_flag = arbitration_initiator } } } remove_core = LEG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NIA = { has_country_flag = arbitration_initiator } } } remove_core = NIA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SDB = { has_country_flag = arbitration_initiator } } } remove_core = SDB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRB = { has_country_flag = arbitration_initiator } } } remove_core = CRB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ANT = { has_country_flag = arbitration_initiator } } } remove_core = ANT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RUM = { has_country_flag = arbitration_initiator } } } remove_core = RUM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAM = { has_country_flag = arbitration_initiator } } } remove_core = SAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice URP = { has_country_flag = arbitration_initiator } } } remove_core = URP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GCF = { has_country_flag = arbitration_initiator } } } remove_core = GCF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VLG = { has_country_flag = arbitration_initiator } } } remove_core = VLG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SMR = { has_country_flag = arbitration_initiator } } } remove_core = SMR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LAU = { has_country_flag = arbitration_initiator } } } remove_core = LAU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HQJ = { has_country_flag = arbitration_initiator } } } remove_core = HQJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TST = { has_country_flag = arbitration_initiator } } } remove_core = TST }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MSK = { has_country_flag = arbitration_initiator } } } remove_core = MSK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAU = { has_country_flag = arbitration_initiator } } } remove_core = MAU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SEY = { has_country_flag = arbitration_initiator } } } remove_core = SEY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IOT = { has_country_flag = arbitration_initiator } } } remove_core = IOT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SGP = { has_country_flag = arbitration_initiator } } } remove_core = SGP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NAN = { has_country_flag = arbitration_initiator } } } remove_core = NAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SVA = { has_country_flag = arbitration_initiator } } } remove_core = SVA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MIG = { has_country_flag = arbitration_initiator } } } remove_core = MIG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GEN = { has_country_flag = arbitration_initiator } } } remove_core = GEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAT = { has_country_flag = arbitration_initiator } } } remove_core = PAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice STG = { has_country_flag = arbitration_initiator } } } remove_core = STG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BGN = { has_country_flag = arbitration_initiator } } } remove_core = BGN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SBS = { has_country_flag = arbitration_initiator } } } remove_core = SBS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PTK = { has_country_flag = arbitration_initiator } } } remove_core = PTK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RIA = { has_country_flag = arbitration_initiator } } } remove_core = RIA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BTN = { has_country_flag = arbitration_initiator } } } remove_core = BTN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KUN = { has_country_flag = arbitration_initiator } } } remove_core = KUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LAS = { has_country_flag = arbitration_initiator } } } remove_core = LAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHZ = { has_country_flag = arbitration_initiator } } } remove_core = KHZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHR = { has_country_flag = arbitration_initiator } } } remove_core = KHR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZFN = { has_country_flag = arbitration_initiator } } } remove_core = ZFN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AZH = { has_country_flag = arbitration_initiator } } } remove_core = AZH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice URM = { has_country_flag = arbitration_initiator } } } remove_core = URM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YEK = { has_country_flag = arbitration_initiator } } } remove_core = YEK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ABA = { has_country_flag = arbitration_initiator } } } remove_core = ABA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TUG = { has_country_flag = arbitration_initiator } } } remove_core = TUG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RGA = { has_country_flag = arbitration_initiator } } } remove_core = RGA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ITS = { has_country_flag = arbitration_initiator } } } remove_core = ITS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARP = { has_country_flag = arbitration_initiator } } } remove_core = ARP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRO = { has_country_flag = arbitration_initiator } } } remove_core = PRO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OSS = { has_country_flag = arbitration_initiator } } } remove_core = OSS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VOJ = { has_country_flag = arbitration_initiator } } } remove_core = VOJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SMI = { has_country_flag = arbitration_initiator } } } remove_core = SMI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRI = { has_country_flag = arbitration_initiator } } } remove_core = FRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MRV = { has_country_flag = arbitration_initiator } } } remove_core = MRV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AUB = { has_country_flag = arbitration_initiator } } } remove_core = AUB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UPB = { has_country_flag = arbitration_initiator } } } remove_core = UPB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TBA = { has_country_flag = arbitration_initiator } } } remove_core = TBA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRN = { has_country_flag = arbitration_initiator } } } remove_core = CRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NAP = { has_country_flag = arbitration_initiator } } } remove_core = NAP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SOV = { has_country_flag = arbitration_initiator } } } remove_core = SOV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IDC = { has_country_flag = arbitration_initiator } } } remove_core = IDC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRN = { has_country_flag = arbitration_initiator } } } remove_core = BRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRK = { has_country_flag = arbitration_initiator } } } remove_core = FRK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice THU = { has_country_flag = arbitration_initiator } } } remove_core = THU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAL = { has_country_flag = arbitration_initiator } } } remove_core = PAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice POM = { has_country_flag = arbitration_initiator } } } remove_core = POM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PLR = { has_country_flag = arbitration_initiator } } } remove_core = PLR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MEE = { has_country_flag = arbitration_initiator } } } remove_core = MEE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UBH = { has_country_flag = arbitration_initiator } } } remove_core = UBH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NYM = { has_country_flag = arbitration_initiator } } } remove_core = NYM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KRW = { has_country_flag = arbitration_initiator } } } remove_core = KRW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BNY = { has_country_flag = arbitration_initiator } } } remove_core = BNY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AMA = { has_country_flag = arbitration_initiator } } } remove_core = AMA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DNN = { has_country_flag = arbitration_initiator } } } remove_core = DNN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUS = { has_country_flag = arbitration_initiator } } } remove_core = LUS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BGR = { has_country_flag = arbitration_initiator } } } remove_core = BGR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HUR = { has_country_flag = arbitration_initiator } } } remove_core = HUR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAZ = { has_country_flag = arbitration_initiator } } } remove_core = HAZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUR = { has_country_flag = arbitration_initiator } } } remove_core = LUR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BKY = { has_country_flag = arbitration_initiator } } } remove_core = BKY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HRT = { has_country_flag = arbitration_initiator } } } remove_core = HRT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAC = { has_country_flag = arbitration_initiator } } } remove_core = PAC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice QAS = { has_country_flag = arbitration_initiator } } } remove_core = QAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SZK = { has_country_flag = arbitration_initiator } } } remove_core = SZK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SSS = { has_country_flag = arbitration_initiator } } } remove_core = SSS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RIG = { has_country_flag = arbitration_initiator } } } remove_core = RIG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHR = { has_country_flag = arbitration_initiator } } } remove_core = CHR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CLR = { has_country_flag = arbitration_initiator } } } remove_core = CLR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRR = { has_country_flag = arbitration_initiator } } } remove_core = PRR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BNF = { has_country_flag = arbitration_initiator } } } remove_core = BNF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ALN = { has_country_flag = arbitration_initiator } } } remove_core = ALN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SOC = { has_country_flag = arbitration_initiator } } } remove_core = SOC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ACE = { has_country_flag = arbitration_initiator } } } remove_core = ACE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CNR = { has_country_flag = arbitration_initiator } } } remove_core = CNR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HNZ = { has_country_flag = arbitration_initiator } } } remove_core = HNZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VNR = { has_country_flag = arbitration_initiator } } } remove_core = VNR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PCF = { has_country_flag = arbitration_initiator } } } remove_core = PCF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAA = { has_country_flag = arbitration_initiator } } } remove_core = SAA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ATC = { has_country_flag = arbitration_initiator } } } remove_core = ATC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZOU = { has_country_flag = arbitration_initiator } } } remove_core = ZOU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VLK = { has_country_flag = arbitration_initiator } } } remove_core = VLK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GHN = { has_country_flag = arbitration_initiator } } } remove_core = GHN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MNP = { has_country_flag = arbitration_initiator } } } remove_core = MNP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BDK = { has_country_flag = arbitration_initiator } } } remove_core = BDK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SGM = { has_country_flag = arbitration_initiator } } } remove_core = SGM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NMB = { has_country_flag = arbitration_initiator } } } remove_core = NMB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TMR = { has_country_flag = arbitration_initiator } } } remove_core = TMR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLG = { has_country_flag = arbitration_initiator } } } remove_core = SLG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRK = { has_country_flag = arbitration_initiator } } } remove_core = PRK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PHG = { has_country_flag = arbitration_initiator } } } remove_core = PHG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRO = { has_country_flag = arbitration_initiator } } } remove_core = FRO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NCT = { has_country_flag = arbitration_initiator } } } remove_core = NCT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HBY = { has_country_flag = arbitration_initiator } } } remove_core = HBY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice QAT = { has_country_flag = arbitration_initiator } } } remove_core = QAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRY = { has_country_flag = arbitration_initiator } } } remove_core = BRY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLD = { has_country_flag = arbitration_initiator } } } remove_core = MLD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAR = { has_country_flag = arbitration_initiator } } } remove_core = KAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAK = { has_country_flag = arbitration_initiator } } } remove_core = PAK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRL = { has_country_flag = arbitration_initiator } } } remove_core = CRL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RDL = { has_country_flag = arbitration_initiator } } } remove_core = RDL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BTL = { has_country_flag = arbitration_initiator } } } remove_core = BTL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BDN = { has_country_flag = arbitration_initiator } } } remove_core = BDN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BNB = { has_country_flag = arbitration_initiator } } } remove_core = BNB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MKN = { has_country_flag = arbitration_initiator } } } remove_core = MKN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BHT = { has_country_flag = arbitration_initiator } } } remove_core = BHT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SRN = { has_country_flag = arbitration_initiator } } } remove_core = SRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LBG = { has_country_flag = arbitration_initiator } } } remove_core = LBG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FIU = { has_country_flag = arbitration_initiator } } } remove_core = FIU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SYC = { has_country_flag = arbitration_initiator } } } remove_core = SYC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ABK = { has_country_flag = arbitration_initiator } } } remove_core = ABK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRT = { has_country_flag = arbitration_initiator } } } remove_core = CRT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SBA = { has_country_flag = arbitration_initiator } } } remove_core = SBA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARC = { has_country_flag = arbitration_initiator } } } remove_core = ARC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LHJ = { has_country_flag = arbitration_initiator } } } remove_core = LHJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FDL = { has_country_flag = arbitration_initiator } } } remove_core = FDL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KTH = { has_country_flag = arbitration_initiator } } } remove_core = KTH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MHR = { has_country_flag = arbitration_initiator } } } remove_core = MHR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHK = { has_country_flag = arbitration_initiator } } } remove_core = SHK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WRL = { has_country_flag = arbitration_initiator } } } remove_core = WRL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BHP = { has_country_flag = arbitration_initiator } } } remove_core = BHP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice EZO = { has_country_flag = arbitration_initiator } } } remove_core = EZO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHY = { has_country_flag = arbitration_initiator } } } remove_core = CHY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHK = { has_country_flag = arbitration_initiator } } } remove_core = CHK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice QNG = { has_country_flag = arbitration_initiator } } } remove_core = QNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MGH = { has_country_flag = arbitration_initiator } } } remove_core = MGH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RGS = { has_country_flag = arbitration_initiator } } } remove_core = RGS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAH = { has_country_flag = arbitration_initiator } } } remove_core = BAH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAA = { has_country_flag = arbitration_initiator } } } remove_core = PAA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MGO = { has_country_flag = arbitration_initiator } } } remove_core = MGO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAR = { has_country_flag = arbitration_initiator } } } remove_core = MAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PNB = { has_country_flag = arbitration_initiator } } } remove_core = PNB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MGR = { has_country_flag = arbitration_initiator } } } remove_core = MGR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAP = { has_country_flag = arbitration_initiator } } } remove_core = SAP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAC = { has_country_flag = arbitration_initiator } } } remove_core = SAC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ENT = { has_country_flag = arbitration_initiator } } } remove_core = ENT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GCO = { has_country_flag = arbitration_initiator } } } remove_core = GCO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GUY = { has_country_flag = arbitration_initiator } } } remove_core = GUY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LPL = { has_country_flag = arbitration_initiator } } } remove_core = LPL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PBC = { has_country_flag = arbitration_initiator } } } remove_core = PBC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PTG = { has_country_flag = arbitration_initiator } } } remove_core = PTG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SPU = { has_country_flag = arbitration_initiator } } } remove_core = SPU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BLZ = { has_country_flag = arbitration_initiator } } } remove_core = BLZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAK = { has_country_flag = arbitration_initiator } } } remove_core = DAK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FSA = { has_country_flag = arbitration_initiator } } } remove_core = FSA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GRN = { has_country_flag = arbitration_initiator } } } remove_core = GRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LSK = { has_country_flag = arbitration_initiator } } } remove_core = LSK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MRU = { has_country_flag = arbitration_initiator } } } remove_core = MRU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRI = { has_country_flag = arbitration_initiator } } } remove_core = PRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RPL = { has_country_flag = arbitration_initiator } } } remove_core = RPL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TRS = { has_country_flag = arbitration_initiator } } } remove_core = TRS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UIL = { has_country_flag = arbitration_initiator } } } remove_core = UIL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UNB = { has_country_flag = arbitration_initiator } } } remove_core = UNB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UNM = { has_country_flag = arbitration_initiator } } } remove_core = UNM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UOR = { has_country_flag = arbitration_initiator } } } remove_core = UOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHP = { has_country_flag = arbitration_initiator } } } remove_core = CHP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LOS = { has_country_flag = arbitration_initiator } } } remove_core = LOS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OAX = { has_country_flag = arbitration_initiator } } } remove_core = OAX }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RGR = { has_country_flag = arbitration_initiator } } } remove_core = RGR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SON = { has_country_flag = arbitration_initiator } } } remove_core = SON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TBS = { has_country_flag = arbitration_initiator } } } remove_core = TBS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YUC = { has_country_flag = arbitration_initiator } } } remove_core = YUC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ALS = { has_country_flag = arbitration_initiator } } } remove_core = ALS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAN = { has_country_flag = arbitration_initiator } } } remove_core = BAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BKV = { has_country_flag = arbitration_initiator } } } remove_core = BKV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRT = { has_country_flag = arbitration_initiator } } } remove_core = BRT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BSQ = { has_country_flag = arbitration_initiator } } } remove_core = BSQ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRS = { has_country_flag = arbitration_initiator } } } remove_core = CRS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DLM = { has_country_flag = arbitration_initiator } } } remove_core = DLM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ENL = { has_country_flag = arbitration_initiator } } } remove_core = ENL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GLC = { has_country_flag = arbitration_initiator } } } remove_core = GLC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GLM = { has_country_flag = arbitration_initiator } } } remove_core = GLM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IBR = { has_country_flag = arbitration_initiator } } } remove_core = IBR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LOR = { has_country_flag = arbitration_initiator } } } remove_core = LOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MCD = { has_country_flag = arbitration_initiator } } } remove_core = MCD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLT = { has_country_flag = arbitration_initiator } } } remove_core = MLT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RMG = { has_country_flag = arbitration_initiator } } } remove_core = RMG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SPC = { has_country_flag = arbitration_initiator } } } remove_core = SPC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SRD = { has_country_flag = arbitration_initiator } } } remove_core = SRD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SVY = { has_country_flag = arbitration_initiator } } } remove_core = SVY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SWH = { has_country_flag = arbitration_initiator } } } remove_core = SWH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WHA = { has_country_flag = arbitration_initiator } } } remove_core = WHA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DNB = { has_country_flag = arbitration_initiator } } } remove_core = DNB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RHI = { has_country_flag = arbitration_initiator } } } remove_core = RHI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PML = { has_country_flag = arbitration_initiator } } } remove_core = PML }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PZN = { has_country_flag = arbitration_initiator } } } remove_core = PZN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLS = { has_country_flag = arbitration_initiator } } } remove_core = SLS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WES = { has_country_flag = arbitration_initiator } } } remove_core = WES }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AKH = { has_country_flag = arbitration_initiator } } } remove_core = AKH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ALT = { has_country_flag = arbitration_initiator } } } remove_core = ALT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CPL = { has_country_flag = arbitration_initiator } } } remove_core = CPL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DON = { has_country_flag = arbitration_initiator } } } remove_core = DON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAZ = { has_country_flag = arbitration_initiator } } } remove_core = KAZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAM = { has_country_flag = arbitration_initiator } } } remove_core = KAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KMK = { has_country_flag = arbitration_initiator } } } remove_core = KMK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KRL = { has_country_flag = arbitration_initiator } } } remove_core = KRL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIB = { has_country_flag = arbitration_initiator } } } remove_core = SIB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TAR = { has_country_flag = arbitration_initiator } } } remove_core = TAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TNT = { has_country_flag = arbitration_initiator } } } remove_core = TNT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice URA = { has_country_flag = arbitration_initiator } } } remove_core = URA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YAK = { has_country_flag = arbitration_initiator } } } remove_core = YAK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GUK = { has_country_flag = arbitration_initiator } } } remove_core = GUK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FER = { has_country_flag = arbitration_initiator } } } remove_core = FER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARU = { has_country_flag = arbitration_initiator } } } remove_core = ARU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ASY = { has_country_flag = arbitration_initiator } } } remove_core = ASY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BHR = { has_country_flag = arbitration_initiator } } } remove_core = BHR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CIR = { has_country_flag = arbitration_initiator } } } remove_core = CIR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CLC = { has_country_flag = arbitration_initiator } } } remove_core = CLC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAG = { has_country_flag = arbitration_initiator } } } remove_core = DAG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAL = { has_country_flag = arbitration_initiator } } } remove_core = HAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HTY = { has_country_flag = arbitration_initiator } } } remove_core = HTY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JOR = { has_country_flag = arbitration_initiator } } } remove_core = JOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KDS = { has_country_flag = arbitration_initiator } } } remove_core = KDS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KWT = { has_country_flag = arbitration_initiator } } } remove_core = KWT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KYR = { has_country_flag = arbitration_initiator } } } remove_core = KYR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LBN = { has_country_flag = arbitration_initiator } } } remove_core = LBN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NYE = { has_country_flag = arbitration_initiator } } } remove_core = NYE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PLS = { has_country_flag = arbitration_initiator } } } remove_core = PLS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PNT = { has_country_flag = arbitration_initiator } } } remove_core = PNT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SYR = { has_country_flag = arbitration_initiator } } } remove_core = SYR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TAJ = { has_country_flag = arbitration_initiator } } } remove_core = TAJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TCA = { has_country_flag = arbitration_initiator } } } remove_core = TCA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TKM = { has_country_flag = arbitration_initiator } } } remove_core = TKM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TKS = { has_country_flag = arbitration_initiator } } } remove_core = TKS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UYG = { has_country_flag = arbitration_initiator } } } remove_core = UYG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UZB = { has_country_flag = arbitration_initiator } } } remove_core = UZB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ASM = { has_country_flag = arbitration_initiator } } } remove_core = ASM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BIH = { has_country_flag = arbitration_initiator } } } remove_core = BIH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BLC = { has_country_flag = arbitration_initiator } } } remove_core = BLC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BNG = { has_country_flag = arbitration_initiator } } } remove_core = BNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DRA = { has_country_flag = arbitration_initiator } } } remove_core = DRA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KRN = { has_country_flag = arbitration_initiator } } } remove_core = KRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAH = { has_country_flag = arbitration_initiator } } } remove_core = MAH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RAJ = { has_country_flag = arbitration_initiator } } } remove_core = RAJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SRI = { has_country_flag = arbitration_initiator } } } remove_core = SRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BKF = { has_country_flag = arbitration_initiator } } } remove_core = BKF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZBW = { has_country_flag = arbitration_initiator } } } remove_core = ZBW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CMS = { has_country_flag = arbitration_initiator } } } remove_core = CMS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice EQG = { has_country_flag = arbitration_initiator } } } remove_core = EQG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TUA = { has_country_flag = arbitration_initiator } } } remove_core = TUA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AGC = { has_country_flag = arbitration_initiator } } } remove_core = AGC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ANG = { has_country_flag = arbitration_initiator } } } remove_core = ANG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARO = { has_country_flag = arbitration_initiator } } } remove_core = ARO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ASH = { has_country_flag = arbitration_initiator } } } remove_core = ASH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AWS = { has_country_flag = arbitration_initiator } } } remove_core = AWS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AZA = { has_country_flag = arbitration_initiator } } } remove_core = AZA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BEN = { has_country_flag = arbitration_initiator } } } remove_core = BEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRD = { has_country_flag = arbitration_initiator } } } remove_core = BRD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BGU = { has_country_flag = arbitration_initiator } } } remove_core = BGU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BSH = { has_country_flag = arbitration_initiator } } } remove_core = BSH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BUG = { has_country_flag = arbitration_initiator } } } remove_core = BUG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BSG = { has_country_flag = arbitration_initiator } } } remove_core = BSG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NKO = { has_country_flag = arbitration_initiator } } } remove_core = NKO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CAR = { has_country_flag = arbitration_initiator } } } remove_core = CAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHD = { has_country_flag = arbitration_initiator } } } remove_core = CHD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CLA = { has_country_flag = arbitration_initiator } } } remove_core = CLA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CMR = { has_country_flag = arbitration_initiator } } } remove_core = CMR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CYR = { has_country_flag = arbitration_initiator } } } remove_core = CYR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAH = { has_country_flag = arbitration_initiator } } } remove_core = DAH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAM = { has_country_flag = arbitration_initiator } } } remove_core = DAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAR = { has_country_flag = arbitration_initiator } } } remove_core = DAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DND = { has_country_flag = arbitration_initiator } } } remove_core = DND }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GAB = { has_country_flag = arbitration_initiator } } } remove_core = GAB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GAZ = { has_country_flag = arbitration_initiator } } } remove_core = GAZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GBU = { has_country_flag = arbitration_initiator } } } remove_core = GBU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GEL = { has_country_flag = arbitration_initiator } } } remove_core = GEL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GMB = { has_country_flag = arbitration_initiator } } } remove_core = GMB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GNE = { has_country_flag = arbitration_initiator } } } remove_core = GNE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GON = { has_country_flag = arbitration_initiator } } } remove_core = GON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAR = { has_country_flag = arbitration_initiator } } } remove_core = HAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WLO = { has_country_flag = arbitration_initiator } } } remove_core = WLO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GJM = { has_country_flag = arbitration_initiator } } } remove_core = GJM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IVC = { has_country_flag = arbitration_initiator } } } remove_core = IVC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAL = { has_country_flag = arbitration_initiator } } } remove_core = JAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAF = { has_country_flag = arbitration_initiator } } } remove_core = KAF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KBO = { has_country_flag = arbitration_initiator } } } remove_core = KBO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KNG = { has_country_flag = arbitration_initiator } } } remove_core = KNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KNY = { has_country_flag = arbitration_initiator } } } remove_core = KNY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KON = { has_country_flag = arbitration_initiator } } } remove_core = KON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KUB = { has_country_flag = arbitration_initiator } } } remove_core = KUB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KZB = { has_country_flag = arbitration_initiator } } } remove_core = KZB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LBA = { has_country_flag = arbitration_initiator } } } remove_core = LBA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LBY = { has_country_flag = arbitration_initiator } } } remove_core = LBY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LOA = { has_country_flag = arbitration_initiator } } } remove_core = LOA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUN = { has_country_flag = arbitration_initiator } } } remove_core = LUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAJ = { has_country_flag = arbitration_initiator } } } remove_core = MAJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAS = { has_country_flag = arbitration_initiator } } } remove_core = MAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAT = { has_country_flag = arbitration_initiator } } } remove_core = MAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLI = { has_country_flag = arbitration_initiator } } } remove_core = MLI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLW = { has_country_flag = arbitration_initiator } } } remove_core = MLW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MNG = { has_country_flag = arbitration_initiator } } } remove_core = MNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MOS = { has_country_flag = arbitration_initiator } } } remove_core = MOS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MOZ = { has_country_flag = arbitration_initiator } } } remove_core = MOZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NGR = { has_country_flag = arbitration_initiator } } } remove_core = NGR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NIG = { has_country_flag = arbitration_initiator } } } remove_core = NIG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OYO = { has_country_flag = arbitration_initiator } } } remove_core = OYO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RWA = { has_country_flag = arbitration_initiator } } } remove_core = RWA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SEG = { has_country_flag = arbitration_initiator } } } remove_core = SEG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHO = { has_country_flag = arbitration_initiator } } } remove_core = SHO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHW = { has_country_flag = arbitration_initiator } } } remove_core = SHW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLE = { has_country_flag = arbitration_initiator } } } remove_core = SLE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SNG = { has_country_flag = arbitration_initiator } } } remove_core = SNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SOM = { has_country_flag = arbitration_initiator } } } remove_core = SOM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SUA = { has_country_flag = arbitration_initiator } } } remove_core = SUA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SUD = { has_country_flag = arbitration_initiator } } } remove_core = SUD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TIG = { has_country_flag = arbitration_initiator } } } remove_core = TIG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TNZ = { has_country_flag = arbitration_initiator } } } remove_core = TNZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TOG = { has_country_flag = arbitration_initiator } } } remove_core = TOG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TOO = { has_country_flag = arbitration_initiator } } } remove_core = TOO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TOU = { has_country_flag = arbitration_initiator } } } remove_core = TOU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TRZ = { has_country_flag = arbitration_initiator } } } remove_core = TRZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TPT = { has_country_flag = arbitration_initiator } } } remove_core = TPT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TSW = { has_country_flag = arbitration_initiator } } } remove_core = TSW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WAD = { has_country_flag = arbitration_initiator } } } remove_core = WAD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WRI = { has_country_flag = arbitration_initiator } } } remove_core = WRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WOL = { has_country_flag = arbitration_initiator } } } remove_core = WOL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice XHO = { has_country_flag = arbitration_initiator } } } remove_core = XHO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZAM = { has_country_flag = arbitration_initiator } } } remove_core = ZAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ADW = { has_country_flag = arbitration_initiator } } } remove_core = ADW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRM = { has_country_flag = arbitration_initiator } } } remove_core = BRM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BOI = { has_country_flag = arbitration_initiator } } } remove_core = BOI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AKR = { has_country_flag = arbitration_initiator } } } remove_core = AKR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RUN = { has_country_flag = arbitration_initiator } } } remove_core = RUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WSA = { has_country_flag = arbitration_initiator } } } remove_core = WSA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice STP = { has_country_flag = arbitration_initiator } } } remove_core = STP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CPV = { has_country_flag = arbitration_initiator } } } remove_core = CPV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRN = { has_country_flag = arbitration_initiator } } } remove_core = FRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DJA = { has_country_flag = arbitration_initiator } } } remove_core = DJA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FJN = { has_country_flag = arbitration_initiator } } } remove_core = FJN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GMJ = { has_country_flag = arbitration_initiator } } } remove_core = GMJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GNG = { has_country_flag = arbitration_initiator } } } remove_core = GNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HNN = { has_country_flag = arbitration_initiator } } } remove_core = HNN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HUI = { has_country_flag = arbitration_initiator } } } remove_core = HUI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice INO = { has_country_flag = arbitration_initiator } } } remove_core = INO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KCH = { has_country_flag = arbitration_initiator } } } remove_core = KCH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KLM = { has_country_flag = arbitration_initiator } } } remove_core = KLM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KMT = { has_country_flag = arbitration_initiator } } } remove_core = KMT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KTI = { has_country_flag = arbitration_initiator } } } remove_core = KTI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LAN = { has_country_flag = arbitration_initiator } } } remove_core = LAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAL = { has_country_flag = arbitration_initiator } } } remove_core = MAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLY = { has_country_flag = arbitration_initiator } } } remove_core = MLY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHA = { has_country_flag = arbitration_initiator } } } remove_core = SHA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLW = { has_country_flag = arbitration_initiator } } } remove_core = SLW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAK = { has_country_flag = arbitration_initiator } } } remove_core = SAK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SUL = { has_country_flag = arbitration_initiator } } } remove_core = SUL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SWK = { has_country_flag = arbitration_initiator } } } remove_core = SWK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SZC = { has_country_flag = arbitration_initiator } } } remove_core = SZC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TAI = { has_country_flag = arbitration_initiator } } } remove_core = TAI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RCH = { has_country_flag = arbitration_initiator } } } remove_core = RCH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHO = { has_country_flag = arbitration_initiator } } } remove_core = CHO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAG = { has_country_flag = arbitration_initiator } } } remove_core = KAG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RYU = { has_country_flag = arbitration_initiator } } } remove_core = RYU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAT = { has_country_flag = arbitration_initiator } } } remove_core = SAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SEN = { has_country_flag = arbitration_initiator } } } remove_core = SEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TKG = { has_country_flag = arbitration_initiator } } } remove_core = TKG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TOS = { has_country_flag = arbitration_initiator } } } remove_core = TOS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YZW = { has_country_flag = arbitration_initiator } } } remove_core = YZW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FIJ = { has_country_flag = arbitration_initiator } } } remove_core = FIJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TGA = { has_country_flag = arbitration_initiator } } } remove_core = TGA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TMT = { has_country_flag = arbitration_initiator } } } remove_core = TMT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PPG = { has_country_flag = arbitration_initiator } } } remove_core = PPG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VTU = { has_country_flag = arbitration_initiator } } } remove_core = VTU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SMO = { has_country_flag = arbitration_initiator } } } remove_core = SMO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARA = { has_country_flag = arbitration_initiator } } } remove_core = ARA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BYE = { has_country_flag = arbitration_initiator } } } remove_core = BYE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PLC = { has_country_flag = arbitration_initiator } } } remove_core = PLC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UBD = { has_country_flag = arbitration_initiator } } } remove_core = UBD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DEN = { has_country_flag = arbitration_initiator } } } remove_core = DEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FIN = { has_country_flag = arbitration_initiator } } } remove_core = FIN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NOR = { has_country_flag = arbitration_initiator } } } remove_core = NOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SCA = { has_country_flag = arbitration_initiator } } } remove_core = SCA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SWE = { has_country_flag = arbitration_initiator } } } remove_core = SWE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BEL = { has_country_flag = arbitration_initiator } } } remove_core = BEL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CAT = { has_country_flag = arbitration_initiator } } } remove_core = CAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FLA = { has_country_flag = arbitration_initiator } } } remove_core = FLA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IRE = { has_country_flag = arbitration_initiator } } } remove_core = IRE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NET = { has_country_flag = arbitration_initiator } } } remove_core = NET }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice POR = { has_country_flag = arbitration_initiator } } } remove_core = POR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SCO = { has_country_flag = arbitration_initiator } } } remove_core = SCO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SPA = { has_country_flag = arbitration_initiator } } } remove_core = SPA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WLL = { has_country_flag = arbitration_initiator } } } remove_core = WLL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ANH = { has_country_flag = arbitration_initiator } } } remove_core = ANH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAD = { has_country_flag = arbitration_initiator } } } remove_core = BAD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAV = { has_country_flag = arbitration_initiator } } } remove_core = BAV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRA = { has_country_flag = arbitration_initiator } } } remove_core = BRA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRE = { has_country_flag = arbitration_initiator } } } remove_core = BRE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice COB = { has_country_flag = arbitration_initiator } } } remove_core = COB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DZG = { has_country_flag = arbitration_initiator } } } remove_core = DZG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRM = { has_country_flag = arbitration_initiator } } } remove_core = FRM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAM = { has_country_flag = arbitration_initiator } } } remove_core = HAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAN = { has_country_flag = arbitration_initiator } } } remove_core = HAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HES = { has_country_flag = arbitration_initiator } } } remove_core = HES }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HEK = { has_country_flag = arbitration_initiator } } } remove_core = HEK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HOL = { has_country_flag = arbitration_initiator } } } remove_core = HOL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LIP = { has_country_flag = arbitration_initiator } } } remove_core = LIP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUB = { has_country_flag = arbitration_initiator } } } remove_core = LUB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUX = { has_country_flag = arbitration_initiator } } } remove_core = LUX }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MEC = { has_country_flag = arbitration_initiator } } } remove_core = MEC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MEI = { has_country_flag = arbitration_initiator } } } remove_core = MEI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NAS = { has_country_flag = arbitration_initiator } } } remove_core = NAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NGF = { has_country_flag = arbitration_initiator } } } remove_core = NGF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OLD = { has_country_flag = arbitration_initiator } } } remove_core = OLD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAX = { has_country_flag = arbitration_initiator } } } remove_core = SAX }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SCH = { has_country_flag = arbitration_initiator } } } remove_core = SCH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SGF = { has_country_flag = arbitration_initiator } } } remove_core = SGF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WEI = { has_country_flag = arbitration_initiator } } } remove_core = WEI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WUR = { has_country_flag = arbitration_initiator } } } remove_core = WUR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LOM = { has_country_flag = arbitration_initiator } } } remove_core = LOM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUC = { has_country_flag = arbitration_initiator } } } remove_core = LUC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MOD = { has_country_flag = arbitration_initiator } } } remove_core = MOD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAP = { has_country_flag = arbitration_initiator } } } remove_core = PAP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PAR = { has_country_flag = arbitration_initiator } } } remove_core = PAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAR = { has_country_flag = arbitration_initiator } } } remove_core = SAR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIC = { has_country_flag = arbitration_initiator } } } remove_core = SIC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TUS = { has_country_flag = arbitration_initiator } } } remove_core = TUS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VEN = { has_country_flag = arbitration_initiator } } } remove_core = VEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BOH = { has_country_flag = arbitration_initiator } } } remove_core = BOH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KRA = { has_country_flag = arbitration_initiator } } } remove_core = KRA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRI = { has_country_flag = arbitration_initiator } } } remove_core = CRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice EST = { has_country_flag = arbitration_initiator } } } remove_core = EST }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HUN = { has_country_flag = arbitration_initiator } } } remove_core = HUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LIT = { has_country_flag = arbitration_initiator } } } remove_core = LIT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LAT = { has_country_flag = arbitration_initiator } } } remove_core = LAT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice POL = { has_country_flag = arbitration_initiator } } } remove_core = POL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLV = { has_country_flag = arbitration_initiator } } } remove_core = SLV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SWI = { has_country_flag = arbitration_initiator } } } remove_core = SWI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RUT = { has_country_flag = arbitration_initiator } } } remove_core = RUT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIE = { has_country_flag = arbitration_initiator } } } remove_core = SIE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UKR = { has_country_flag = arbitration_initiator } } } remove_core = UKR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CZH = { has_country_flag = arbitration_initiator } } } remove_core = CZH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ALB = { has_country_flag = arbitration_initiator } } } remove_core = ALB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BOS = { has_country_flag = arbitration_initiator } } } remove_core = BOS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BUL = { has_country_flag = arbitration_initiator } } } remove_core = BUL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRE = { has_country_flag = arbitration_initiator } } } remove_core = CRE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CRO = { has_country_flag = arbitration_initiator } } } remove_core = CRO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CYP = { has_country_flag = arbitration_initiator } } } remove_core = CYP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GRE = { has_country_flag = arbitration_initiator } } } remove_core = GRE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GRR = { has_country_flag = arbitration_initiator } } } remove_core = GRR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ION = { has_country_flag = arbitration_initiator } } } remove_core = ION }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MOL = { has_country_flag = arbitration_initiator } } } remove_core = MOL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MON = { has_country_flag = arbitration_initiator } } } remove_core = MON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ROM = { has_country_flag = arbitration_initiator } } } remove_core = ROM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SER = { has_country_flag = arbitration_initiator } } } remove_core = SER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SRR = { has_country_flag = arbitration_initiator } } } remove_core = SRR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SLO = { has_country_flag = arbitration_initiator } } } remove_core = SLO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TUR = { has_country_flag = arbitration_initiator } } } remove_core = TUR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WAL = { has_country_flag = arbitration_initiator } } } remove_core = WAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YUG = { has_country_flag = arbitration_initiator } } } remove_core = YUG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BFR = { has_country_flag = arbitration_initiator } } } remove_core = BFR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ALD = { has_country_flag = arbitration_initiator } } } remove_core = ALD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CNG = { has_country_flag = arbitration_initiator } } } remove_core = CNG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice EGY = { has_country_flag = arbitration_initiator } } } remove_core = EGY }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ETH = { has_country_flag = arbitration_initiator } } } remove_core = ETH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAD = { has_country_flag = arbitration_initiator } } } remove_core = MAD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LIB = { has_country_flag = arbitration_initiator } } } remove_core = LIB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MOR = { has_country_flag = arbitration_initiator } } } remove_core = MOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NAL = { has_country_flag = arbitration_initiator } } } remove_core = NAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ORA = { has_country_flag = arbitration_initiator } } } remove_core = ORA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SAF = { has_country_flag = arbitration_initiator } } } remove_core = SAF }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SOK = { has_country_flag = arbitration_initiator } } } remove_core = SOK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BMW = { has_country_flag = arbitration_initiator } } } remove_core = BMW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TRI = { has_country_flag = arbitration_initiator } } } remove_core = TRI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TRN = { has_country_flag = arbitration_initiator } } } remove_core = TRN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TUN = { has_country_flag = arbitration_initiator } } } remove_core = TUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZAN = { has_country_flag = arbitration_initiator } } } remove_core = ZAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ZUL = { has_country_flag = arbitration_initiator } } } remove_core = ZUL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ABU = { has_country_flag = arbitration_initiator } } } remove_core = ABU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AFG = { has_country_flag = arbitration_initiator } } } remove_core = AFG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARM = { has_country_flag = arbitration_initiator } } } remove_core = ARM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AZB = { has_country_flag = arbitration_initiator } } } remove_core = AZB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BUK = { has_country_flag = arbitration_initiator } } } remove_core = BUK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GEO = { has_country_flag = arbitration_initiator } } } remove_core = GEO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HDJ = { has_country_flag = arbitration_initiator } } } remove_core = HDJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IRQ = { has_country_flag = arbitration_initiator } } } remove_core = IRQ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHI = { has_country_flag = arbitration_initiator } } } remove_core = KHI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KOK = { has_country_flag = arbitration_initiator } } } remove_core = KOK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MUG = { has_country_flag = arbitration_initiator } } } remove_core = MUG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NEJ = { has_country_flag = arbitration_initiator } } } remove_core = NEJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice OMA = { has_country_flag = arbitration_initiator } } } remove_core = OMA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PER = { has_country_flag = arbitration_initiator } } } remove_core = PER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YEM = { has_country_flag = arbitration_initiator } } } remove_core = YEM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KND = { has_country_flag = arbitration_initiator } } } remove_core = KND }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MYN = { has_country_flag = arbitration_initiator } } } remove_core = MYN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHT = { has_country_flag = arbitration_initiator } } } remove_core = KHT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MKU = { has_country_flag = arbitration_initiator } } } remove_core = MKU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHD = { has_country_flag = arbitration_initiator } } } remove_core = SHD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BSR = { has_country_flag = arbitration_initiator } } } remove_core = BSR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KGN = { has_country_flag = arbitration_initiator } } } remove_core = KGN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHN = { has_country_flag = arbitration_initiator } } } remove_core = KHN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DZD = { has_country_flag = arbitration_initiator } } } remove_core = DZD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DUB = { has_country_flag = arbitration_initiator } } } remove_core = DUB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice QSM = { has_country_flag = arbitration_initiator } } } remove_core = QSM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice WKH = { has_country_flag = arbitration_initiator } } } remove_core = WKH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DRV = { has_country_flag = arbitration_initiator } } } remove_core = DRV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KSN = { has_country_flag = arbitration_initiator } } } remove_core = KSN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KLS = { has_country_flag = arbitration_initiator } } } remove_core = KLS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TSI = { has_country_flag = arbitration_initiator } } } remove_core = TSI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHL = { has_country_flag = arbitration_initiator } } } remove_core = KHL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KHA = { has_country_flag = arbitration_initiator } } } remove_core = KHA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DJK = { has_country_flag = arbitration_initiator } } } remove_core = DJK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BZD = { has_country_flag = arbitration_initiator } } } remove_core = BZD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MLN = { has_country_flag = arbitration_initiator } } } remove_core = MLN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HND = { has_country_flag = arbitration_initiator } } } remove_core = HND }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AWA = { has_country_flag = arbitration_initiator } } } remove_core = AWA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAS = { has_country_flag = arbitration_initiator } } } remove_core = BAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BER = { has_country_flag = arbitration_initiator } } } remove_core = BER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BHO = { has_country_flag = arbitration_initiator } } } remove_core = BHO }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BIK = { has_country_flag = arbitration_initiator } } } remove_core = BIK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BUN = { has_country_flag = arbitration_initiator } } } remove_core = BUN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GWA = { has_country_flag = arbitration_initiator } } } remove_core = GWA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HYD = { has_country_flag = arbitration_initiator } } } remove_core = HYD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice IND = { has_country_flag = arbitration_initiator } } } remove_core = IND }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAI = { has_country_flag = arbitration_initiator } } } remove_core = JAI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAS = { has_country_flag = arbitration_initiator } } } remove_core = JAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JOD = { has_country_flag = arbitration_initiator } } } remove_core = JOD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAL = { has_country_flag = arbitration_initiator } } } remove_core = KAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KAS = { has_country_flag = arbitration_initiator } } } remove_core = KAS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KUT = { has_country_flag = arbitration_initiator } } } remove_core = KUT }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LAD = { has_country_flag = arbitration_initiator } } } remove_core = LAD }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAK = { has_country_flag = arbitration_initiator } } } remove_core = MAK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MEW = { has_country_flag = arbitration_initiator } } } remove_core = MEW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MYS = { has_country_flag = arbitration_initiator } } } remove_core = MYS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NAG = { has_country_flag = arbitration_initiator } } } remove_core = NAG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NEP = { has_country_flag = arbitration_initiator } } } remove_core = NEP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ORI = { has_country_flag = arbitration_initiator } } } remove_core = ORI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PNJ = { has_country_flag = arbitration_initiator } } } remove_core = PNJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SHI = { has_country_flag = arbitration_initiator } } } remove_core = SHI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIK = { has_country_flag = arbitration_initiator } } } remove_core = SIK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIN = { has_country_flag = arbitration_initiator } } } remove_core = SIN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TRA = { has_country_flag = arbitration_initiator } } } remove_core = TRA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ATJ = { has_country_flag = arbitration_initiator } } } remove_core = ATJ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BAL = { has_country_flag = arbitration_initiator } } } remove_core = BAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BHU = { has_country_flag = arbitration_initiator } } } remove_core = BHU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRU = { has_country_flag = arbitration_initiator } } } remove_core = BRU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BUR = { has_country_flag = arbitration_initiator } } } remove_core = BUR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CAM = { has_country_flag = arbitration_initiator } } } remove_core = CAM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHI = { has_country_flag = arbitration_initiator } } } remove_core = CHI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DAI = { has_country_flag = arbitration_initiator } } } remove_core = DAI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAV = { has_country_flag = arbitration_initiator } } } remove_core = JAV }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KOR = { has_country_flag = arbitration_initiator } } } remove_core = KOR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice LUA = { has_country_flag = arbitration_initiator } } } remove_core = LUA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JOH = { has_country_flag = arbitration_initiator } } } remove_core = JOH }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SIA = { has_country_flag = arbitration_initiator } } } remove_core = SIA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TIB = { has_country_flag = arbitration_initiator } } } remove_core = TIB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MGL = { has_country_flag = arbitration_initiator } } } remove_core = MGL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice XAN = { has_country_flag = arbitration_initiator } } } remove_core = XAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PHL = { has_country_flag = arbitration_initiator } } } remove_core = PHL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MCK = { has_country_flag = arbitration_initiator } } } remove_core = MCK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GXI = { has_country_flag = arbitration_initiator } } } remove_core = GXI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice SXI = { has_country_flag = arbitration_initiator } } } remove_core = SXI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice YNN = { has_country_flag = arbitration_initiator } } } remove_core = YNN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice XBI = { has_country_flag = arbitration_initiator } } } remove_core = XBI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice XIN = { has_country_flag = arbitration_initiator } } } remove_core = XIN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CAL = { has_country_flag = arbitration_initiator } } } remove_core = CAL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CAN = { has_country_flag = arbitration_initiator } } } remove_core = CAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHE = { has_country_flag = arbitration_initiator } } } remove_core = CHE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice COL = { has_country_flag = arbitration_initiator } } } remove_core = COL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice COS = { has_country_flag = arbitration_initiator } } } remove_core = COS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CSA = { has_country_flag = arbitration_initiator } } } remove_core = CSA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CUB = { has_country_flag = arbitration_initiator } } } remove_core = CUB }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DES = { has_country_flag = arbitration_initiator } } } remove_core = DES }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice DOM = { has_country_flag = arbitration_initiator } } } remove_core = DOM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ELS = { has_country_flag = arbitration_initiator } } } remove_core = ELS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GUA = { has_country_flag = arbitration_initiator } } } remove_core = GUA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAI = { has_country_flag = arbitration_initiator } } } remove_core = HAI }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HAW = { has_country_flag = arbitration_initiator } } } remove_core = HAW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MAN = { has_country_flag = arbitration_initiator } } } remove_core = MAN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MEX = { has_country_flag = arbitration_initiator } } } remove_core = MEX }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice MTC = { has_country_flag = arbitration_initiator } } } remove_core = MTC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice HON = { has_country_flag = arbitration_initiator } } } remove_core = HON }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NEN = { has_country_flag = arbitration_initiator } } } remove_core = NEN }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NEW = { has_country_flag = arbitration_initiator } } } remove_core = NEW }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NIC = { has_country_flag = arbitration_initiator } } } remove_core = NIC }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PNM = { has_country_flag = arbitration_initiator } } } remove_core = PNM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice QUE = { has_country_flag = arbitration_initiator } } } remove_core = QUE }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TEX = { has_country_flag = arbitration_initiator } } } remove_core = TEX }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice UCA = { has_country_flag = arbitration_initiator } } } remove_core = UCA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ARG = { has_country_flag = arbitration_initiator } } } remove_core = ARG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BOL = { has_country_flag = arbitration_initiator } } } remove_core = BOL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice BRZ = { has_country_flag = arbitration_initiator } } } remove_core = BRZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CHL = { has_country_flag = arbitration_initiator } } } remove_core = CHL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice CLM = { has_country_flag = arbitration_initiator } } } remove_core = CLM }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ECU = { has_country_flag = arbitration_initiator } } } remove_core = ECU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PEU = { has_country_flag = arbitration_initiator } } } remove_core = PEU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRG = { has_country_flag = arbitration_initiator } } } remove_core = PRG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice URU = { has_country_flag = arbitration_initiator } } } remove_core = URU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice VNZ = { has_country_flag = arbitration_initiator } } } remove_core = VNZ }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AST = { has_country_flag = arbitration_initiator } } } remove_core = AST }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice NZL = { has_country_flag = arbitration_initiator } } } remove_core = NZL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ENG = { has_country_flag = arbitration_initiator } } } remove_core = ENG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice RUS = { has_country_flag = arbitration_initiator } } } remove_core = RUS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice FRA = { has_country_flag = arbitration_initiator } } } remove_core = FRA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice PRU = { has_country_flag = arbitration_initiator } } } remove_core = PRU }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice GER = { has_country_flag = arbitration_initiator } } } remove_core = GER }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice AUS = { has_country_flag = arbitration_initiator } } } remove_core = AUS }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice USA = { has_country_flag = arbitration_initiator } } } remove_core = USA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAP = { has_country_flag = arbitration_initiator } } } remove_core = JAP }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ITA = { has_country_flag = arbitration_initiator } } } remove_core = ITA }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice KUK = { has_country_flag = arbitration_initiator } } } remove_core = KUK }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ISR = { has_country_flag = arbitration_initiator } } } remove_core = ISR }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice ICL = { has_country_flag = arbitration_initiator } } } remove_core = ICL }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice TPG = { has_country_flag = arbitration_initiator } } } remove_core = TPG }
+			all_core = { limit = { owner = { has_country_flag = scoped_for_dispute_choice JAN = { has_country_flag = arbitration_initiator } } } remove_core = JAN }
+		}
+		CLN = { country_event = 20140 } # Main Cleanup
+    }
+}
+
+country_event = { # Popup Demo
+    id = 20139
+    title = ""	# Arbitration Notification
+    desc = "EVTDESC20133"
+	picture = "arbitration_popup"
+	major = yes
+	allow_multiple_instances = yes
+    is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+        name = "Intriguing development!"
+    }
+}

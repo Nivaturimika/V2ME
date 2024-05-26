@@ -5,7 +5,7 @@
 country_event = { # 
     id = 20
 	major = no
-    title = "This exists purely to bounce stuff"
+    title = "Event Handler"
     #desc = "EVTDESC71002"
     picture = "collectivisation"
     is_triggered_only = yes

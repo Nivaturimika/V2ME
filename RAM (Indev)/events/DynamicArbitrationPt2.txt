@@ -2,18 +2,18 @@
 
 country_event = { # Event to fire starting Cleanup event for CLN
     id = 20070
-    title = "Attempting to Write 2"
+    title = "Arbitration 2 Setup"
     #desc = ""
-    picture = "commonwealth"
-	allow_multiple_instances = yes
+    #picture = "commonwealth"
+	allow_multiple_instances = no
     is_triggered_only = yes
 	
 	immediate = {
+		any_country = { limit = { has_country_flag = arbitration_initiator } set_country_flag = viewer }
 		any_country = {
 			limit = {
 				NOT = { has_country_flag = scoped_for_dispute }
 				NOT = { has_country_flag = arbitration_initiator }
-				NOT = { has_country_flag = scoped_for_dispute }
 				is_greater_power = yes
 				war = no
 			}
@@ -22,13 +22,12 @@ country_event = { # Event to fire starting Cleanup event for CLN
 			CLN = { country_event = 500 }
 			CLN = { change_variable = { which = slot_itterator_variable value = 1 } }
 			CLN = { country_event = 400 }
-			set_country_flag = slotted
 			clr_country_flag = due_for_slotting
 		}
 		CLN = { country_event = 20071 }
-		random_country = {
+		any_country = {
 			limit = {
-				tag = FROM
+				has_country_flag = arbitration_initiator
 				ai = yes
 			}
 			country_event = 20081
@@ -60,13 +59,8 @@ country_event = { # Event to fire starting Cleanup event for CLN
 			limit = { tag = FROM CLN = { check_variable = { which =  slot_itterator_variable value = 10.99 } } }
 			country_event = 20078
 		}
-		any_country = {
-			limit = {
-				has_country_flag = arbitration_initiator
-			}
-			clr_country_flag = viewer
-		}
-		set_variable = { which = slot_itterator_variable value = 0 }
+		CLN = { set_variable = { which = slot_itterator_variable value = 0 } }
+		any_country = { limit = { has_country_flag = arbitration_initiator } clr_country_flag = viewer }
 	}
 	
 	option = {
@@ -76,9 +70,9 @@ country_event = { # Event to fire starting Cleanup event for CLN
 
 country_event = {	# Coutry Flag Wrapper
     id = 20071
-    title = "Arbitration Option Wrapper"
-    picture = "collectivisation"
-
+    title = "Arbitration 2 Option Wrapper"
+    #picture = "collectivisation"
+	allow_multiple_instances = no
 	is_triggered_only = yes
 
     immediate = {
@@ -102,9 +96,9 @@ country_event = {	# Coutry Flag Wrapper
 
 country_event = {	# Country Flag Wrapper cLEANUP
     id = 20072
-    title = "The New Capital!"
-    picture = "collectivisation"
-
+    title = "Arbitration 2 Wrapper Cleanup"
+    #picture = "collectivisation"
+	allow_multiple_instances = no
 	is_triggered_only = yes
 
     immediate = {
@@ -131,8 +125,8 @@ country_event = {	# Country Flag Wrapper cLEANUP
 country_event = {	# Pre Calculate AI Modifiers
     id = 20081
     title = "Calculate AI Modifiers!"
-    picture = "collectivisation"
-
+    #picture = "collectivisation"
+	allow_multiple_instances = no
 	is_triggered_only = yes
 
     immediate = {
@@ -278,6 +272,17 @@ country_event = {	# Pre Calculate AI Modifiers
 		any_country = { limit = { has_country_flag = arbitration_2_option_16 war = yes } THIS = { change_variable = { which = arbitration_2_option_16_preference value = -3 } } }
 		any_country = { limit = { has_country_flag = arbitration_2_option_18 war = yes } THIS = { change_variable = { which = arbitration_2_option_18_preference value = -3 } } }
 		any_country = { limit = { has_country_flag = arbitration_2_option_20 war = yes } THIS = { change_variable = { which = arbitration_2_option_20_preference value = -3 } } }
+		# Overwight Chance to pick the player in debug mode
+		any_country = { limit = { has_country_flag = arbitration_2_option_2 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_2_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_4 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_4_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_6 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_6_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_8 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_8_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_10 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_10_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_12 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_12_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_14 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_14_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_16 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_16_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_18 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_18_preference value = 50 } } }
+		any_country = { limit = { has_country_flag = arbitration_2_option_20 ai = no has_global_flag = debug } THIS = { change_variable = { which = arbitration_2_option_20_preference value = 50 } } }
 	} 
 
 	option = {
@@ -288,7 +293,7 @@ country_event = {	# Pre Calculate AI Modifiers
 
 country_event = {	# Country Flag Wrapper cLEANUP
     id = 20082
-    title = "The New Capital!"
+    title = "Arbitration 2 AI Wrapper Cleanup"
     picture = "collectivisation"
 
 	is_triggered_only = yes
@@ -341,9 +346,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -360,8 +379,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -397,9 +431,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer } # Same day delivery
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -415,9 +463,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				#CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -434,8 +496,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -475,9 +552,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -493,9 +584,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -511,9 +616,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -530,8 +649,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -575,9 +709,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -593,9 +741,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -611,9 +773,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -629,9 +805,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_8_preference value = 9.99 } }
@@ -648,8 +838,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -697,9 +902,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -715,9 +934,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -733,9 +966,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -751,9 +998,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_8_preference value = 9.99 } }
@@ -769,9 +1030,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		#CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_10_preference value = 9.99 } }
@@ -788,8 +1063,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -841,9 +1131,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -859,9 +1163,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -877,9 +1195,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -895,9 +1227,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_8_preference value = 9.99 } }
@@ -913,9 +1259,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_10_preference value = 9.99 } }
@@ -931,9 +1291,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_12_preference value = 9.99 } }
@@ -950,8 +1324,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -1007,9 +1396,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -1025,9 +1428,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -1043,9 +1460,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -1061,9 +1492,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_8_preference value = 9.99 } }
@@ -1079,9 +1524,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_10_preference value = 9.99 } }
@@ -1097,9 +1556,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_12_preference value = 9.99 } }
@@ -1115,9 +1588,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_14 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_14 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_14_preference value = 9.99 } }
@@ -1134,8 +1621,23 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		clr_global_flag = A
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -1195,9 +1697,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_2 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_2_preference value = 9.99 } }
@@ -1213,9 +1729,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_4 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_4_preference value = 9.99 } }
@@ -1231,9 +1761,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_6 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_6_preference value = 9.99 } }
@@ -1249,9 +1793,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_8 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_8_preference value = 9.99 } }
@@ -1267,9 +1825,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_10 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_10_preference value = 9.99 } }
@@ -1285,9 +1857,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_12 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_12_preference value = 9.99 } }
@@ -1303,9 +1889,23 @@ country_event = {
 
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_14 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_14 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_14_preference value = 9.99 } }
@@ -1321,9 +1921,23 @@ country_event = {
 	
     option = {
         name = ""
-		any_country = { limit = { has_country_flag = arbitration_2_option_16 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
-		CLN = { country_event = 20082 }
-		CLN = { country_event = 20090 }
+		arbitration_and_disputes_state_3b = {}
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				any_country = { limit = { has_country_flag = arbitration_2_option_18 } set_country_flag = gp_current_dispute CLN = { country_event = 20072 } set_country_flag = viewer }
+				CLN = { country_event = 20082 }
+				#CLN = { country_event = 20090 }
+				THIS = { random_country = { limit = { ai = yes } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } set_country_flag = used } }
+				THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20090 days = 1 } } }
+				any_country = { clr_country_flag = used }
+			}
+		}
+		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
 			modifier = { factor = 16 check_variable = { which = arbitration_2_option_18_preference value = 9.99 } }
@@ -1340,6 +1954,20 @@ country_event = {
 	option = {
 		name = "We should wait for stronger backers"
 		prestige = -10
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				CLN = { country_event = 20082 }
+				CLN = { country_event = 20140 } # Main Cleanup
+			}
+		}
+		ai_chance = { 
+			factor = 0.3
+			modifier = { factor = 0 has_global_flag = debug }
+		}
 	}
-
+	option = { name = "Debug" ai_chance = { factor = 0 } }
 }

@@ -8,6 +8,7 @@ political_decisions = {
 					has_province_modifier = capital_construction
 				}
 			}
+			ai = no	# Help make logs clearer for arbitrations
 			any_owned_province = {
 				is_core = THIS
 				is_capital = no

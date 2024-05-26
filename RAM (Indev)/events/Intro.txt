@@ -11,7 +11,16 @@ country_event = { # Explanation Event
 	
 	option = {
         name = "Give me a quick tour!"
-		country_event = 10001
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				country_event = 10001
+			}
+		}
+		clr_global_flag = A
     }
 	option = {
         name = "This isn't my first rodeo"
@@ -29,7 +38,16 @@ country_event = { # Colombia is Purple Event
 	
 	option = {
         name = "Oh yeah... it is..."
-		country_event = 10002
+		set_global_flag = A
+		random_country = {
+			limit = {
+				has_global_flag = A
+			}
+			THIS = {
+				country_event = 10002
+			}
+		}
+		clr_global_flag = A
     }
 }
 

@@ -46,6 +46,13 @@ country_event = {
 			}
 			capital_scope = { add_province_modifier = { name = capital_city_modifier duration = -1 } }
 		}
+		any_country = { 
+			limit = {
+				has_country_flag = arbitration_war
+				war = no
+			}
+			CLN = { country_event = 20140 } }
+		}
 		random_owned = {
 			limit = {
 				owner = {

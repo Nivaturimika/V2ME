@@ -2,7 +2,7 @@
 
 country_event = { # Explanation Event
     id = 40
-    title = ""
+    title = "Government Flagging"
     #desc = "EVTDESC1000"
     #picture = "RAM_intro"
 	allow_multiple_instances = yes

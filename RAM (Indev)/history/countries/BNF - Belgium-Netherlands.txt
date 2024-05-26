@@ -57,7 +57,6 @@ upper_house = {
     communist = 0
 }
 
-decision = DIM_cultuurstelsel
 
 #Technologies
 post_napoleonic_thought = 1

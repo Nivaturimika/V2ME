@@ -1,0 +1,26 @@
+country_event = {	# Country Flag Wrapper cLEANUP
+    id = 20140
+    title = "Arbitration 6 Main Cleanup"
+    #picture = "collectivisation"
+	allow_multiple_instances = no
+	is_triggered_only = yes
+
+    immediate = {
+		any_country = {
+			clr_country_flag = arbitration_initiator
+			clr_country_flag = scoped_for_dispute_choice
+			clr_country_flag = gp_current_dispute
+			clr_country_flag = autonomous_region
+			
+		}
+		any_land_province = {
+			remove_province_modifier = dispute_modifier 
+		}
+		clr_global_flag = arbitration_underway
+	} 
+
+	option = {
+        name = "Reset Modifiers"
+    }
+
+}

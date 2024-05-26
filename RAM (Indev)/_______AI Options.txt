@@ -1,0 +1,35 @@
+Could you scroll through the wiki everytime? yes. Should you? No.
+
++ Positive
+
+alliance_with = THIS
+part_of_sphere = yes
+in_sphere = THIS
+is_culture_group = THIS
+num_of_allies = 3
+prestige = 200
+relation = { who = THIS value = 175
+vassal_of = THIS
+
+# Common Governments
+# Common Ideology
+
+
+- Negative 
+
+badboy = 0.8
+is_disarmed = yes
+national_provinces_occupied = 50
+part_of_sphere = no
+has_country_flag = National_Disruption
+has_recently_lost_war = yes
+in_default = yes
+is_disarmed = yes
+war = yes										# Note: Where dynamic event chains should not be possible when a country is at war, unless explicitly relevant
+truce_with = THIS
+
+
+# Antagonistic Governments
+# Antagonistic Ideologies
+
+Use ai = yes/no where player agency would be fun, but NOT in a way that forces a positive/negative outcome on the player.
