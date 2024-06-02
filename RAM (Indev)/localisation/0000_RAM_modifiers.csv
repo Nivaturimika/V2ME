@@ -1,0 +1,18 @@
+Key;English;French;German;Polish;Spanish;Italian;Swedish;Czech;Hungarian;Dutch;Portuguese;Russian;Finnish;
+capital_city_modifier;Capital City;;;;;;;;;;;;;
+capital_construction;Capital Under Construction;;;;;;;;;;;;;
+secret_capital_construction; ;;;;;;;;;;;;;
+enforce_arbitration_arbitree_desc;Force the transfer of territory §Yentire country§W from its occupiers;;Befreit ein §Yganzes Land§W von seinen Unterdrückern;;;;;;;;;;;
+enforce_arbitration_arbitree;Enforce Arbitration;;Befreit das Land;;;;;;;;;;;
+enforce_arbitration_arbitree_short;$THIRD$ acquires $STATE$;$THIRD$ prend $STATE$;$THIRD$ erwirbt $STATE$;;$THIRD$ adquiere $STATE$;;;;;;;;;
+enforce_arbitration_arbitree_setup;Turnover $STATE$ to $THIRD$ from $RECIPIENT$;Prendre $STATE$ à $RECIPIENT$ pour le rendre à $THIRD$;Gebt $STATE$ an $THIRD$ von $RECIPIENT$ zurück;;Arrebatar el estado de $STATE$ de manos de $RECIPIENT$ y devolvérselo a $THIRD$;;;;;;;;;
+enforce_arbitration_initiator_desc;Force the transfer of territory §Yentire country§W from its occupiers;;Befreit ein §Yganzes Land§W von seinen Unterdrückern;;;;;;;;;;;
+enforce_arbitration_initiator;Enforce Arbitration;;Befreit das Land;;;;;;;;;;;
+enforce_arbitration_initiator_short;$THIRD$ acquires $STATE$;$THIRD$ prend $STATE$;$THIRD$ erwirbt $STATE$;;$THIRD$ adquiere $STATE$;;;;;;;;;
+enforce_arbitration_initiator_setup;Turnover $STATE$ to $THIRD$ from $RECIPIENT$;Prendre $STATE$ à $RECIPIENT$ pour le rendre à $THIRD$;Gebt $STATE$ an $THIRD$ von $RECIPIENT$ zurück;;Arrebatar el estado de $STATE$ de manos de $RECIPIENT$ y devolvérselo a $THIRD$;;;;;;;;;
+renounce_cores;Renounce Claims;Réduire;Größe reduzieren;;;;;;;;;;;
+renounce_cores_short;Force $RECIPIENT$ to abandon their claims;Réduire $RECIPIENT$;Reduzieren Sie die Größe von $RECIPIENT$;;;;;;;;;;;
+renounce_cores_desc;Force another §Ycountry§W to abandon any claims on $COUNTRY_ADJ$ core territory;Obliger un autre §Ypays§W à se désarmer et à nous verser des compensations;Zwischen Sie ein anderes §YLand§W zur Abrüstung und zu Reparationszahlungen an uns.;;;;;;;;;;;
+renounce_cores_setup;Force $RECIPIENT$ to abandon their claims on $THIRD$;Réduire $RECIPIENT$;Reduzieren Sie die Größe von $RECIPIENT$;;;;;;;;;;;
+AGRESSION_WAR_ARBITRATION_NAME;$FIRST$ Enforcement of the $ORDER$$COUNTRY_ADJ$ Arbitration;;$ORDER$$FIRST$-$COUNTRY_ADJ$er Befreiungskrieg;;;;;;;;;;;
+AGRESSION_RENOUNCE_CORES_NAME;Enforcing the Renouncement of Claims;;$ORDER$$FIRST$-$COUNTRY_ADJ$er Befreiungskrieg;;;;;;;;;;;
