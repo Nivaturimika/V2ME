@@ -6,35 +6,35 @@ country_event = {	# Pre Calculate AI Modifiers
 	is_triggered_only = yes
 
     immediate = {	# AI behaviour can be tuned in this event
-		THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 1 } }
-		THIS = { change_variable = { which = arbitration_initiator_4_preference value = 1 } }
+		THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 1 } }
+		THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 1 } }
 		# More likely to support allies
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice alliance_with = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 2 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator alliance_with = THIS } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice alliance_with = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator alliance_with = THIS } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 2 } } }
 		# Less likely to support infamous states
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice badboy = 0.8 } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = -1 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator badboy = 0.8 } THIS = { change_variable = { which = arbitration_initiator_4_preference value = -1 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice badboy = 0.8 } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = -1 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator badboy = 0.8 } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = -1 } } }
 		# More likely to support spherelings
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice in_sphere = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 3 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator in_sphere = THIS } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 3 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice in_sphere = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 3 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator in_sphere = THIS } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 3 } } }
 		# More likely to support countries in culture groups
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice is_culture_group = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 2 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator is_culture_group = THIS } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice is_culture_group = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator is_culture_group = THIS } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 2 } } }
 		# More likely to support country with allies
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice num_of_allies = 3 } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 2 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator num_of_allies = 3 } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice num_of_allies = 3 } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator num_of_allies = 3 } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 2 } } }
 		# More likely to support country with prestige
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice prestige = 200 } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 2 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator prestige = 200 } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice prestige = 200 } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator prestige = 200 } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 2 } } }
 		# More likely to support friends
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice relation = { who = THIS value = 175 } } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 2 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator relation = { who = THIS value = 175 } } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice relation = { who = THIS value = 175 } } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 2 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator relation = { who = THIS value = 175 } } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 2 } } }
 		# Less likely to support recent enemies
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice truce_with = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = -4 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator truce_with = THIS } THIS = { change_variable = { which = arbitration_initiator_4_preference value = -4 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice truce_with = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = -4 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator truce_with = THIS } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = -4 } } }
 		# More likely to support vassals
-		any_country = { limit = { has_country_flag = scoped_for_dispute_choice vassal_of = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_4_preference value = 3 } } }
-		any_country = { limit = { has_country_flag = arbitration_initiator vassal_of = THIS } THIS = { change_variable = { which = arbitration_initiator_4_preference value = 3 } } }
+		any_country = { limit = { has_country_flag = scoped_for_dispute_choice vassal_of = THIS } THIS = { change_variable = { which = scoped_for_dispute_choice_5_preference value = 3 } } }
+		any_country = { limit = { has_country_flag = arbitration_initiator vassal_of = THIS } THIS = { change_variable = { which = arbitration_initiator_choice_5_preference value = 3 } } }
 	} 
 
 	option = {
@@ -1406,14 +1406,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = scoped_for_dispute_choice_4_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = scoped_for_dispute_choice_4_preference value = 3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = scoped_for_dispute_choice_4_preference value = 1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = scoped_for_dispute_choice_4_preference value = 0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = scoped_for_dispute_choice_4_preference value = -0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = scoped_for_dispute_choice_4_preference value = -1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = scoped_for_dispute_choice_4_preference value = -3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -3.99 } } }
+			modifier = { factor = 16 check_variable = { which = scoped_for_dispute_choice_5_preference value = 9.99 } }
+			modifier = { factor = 8 check_variable = { which = scoped_for_dispute_choice_5_preference value = 3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = 9.99 } } }
+			modifier = { factor = 4 check_variable = { which = scoped_for_dispute_choice_5_preference value = 1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = 3.99 } } }
+			modifier = { factor = 2 check_variable = { which = scoped_for_dispute_choice_5_preference value = 0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = 1.99 } } }
+			modifier = { factor = 1 check_variable = { which = scoped_for_dispute_choice_5_preference value = -0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = 0.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = scoped_for_dispute_choice_5_preference value = -1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = -0.99 } } }
+			modifier = { factor = 0.05 check_variable = { which = scoped_for_dispute_choice_5_preference value = -3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = -1.99 } } }
+			modifier = { factor = 0.005 NOT = { check_variable = { which = scoped_for_dispute_choice_5_preference value = -3.99 } } }
 		}
     }
 	
@@ -2319,14 +2319,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = arbitration_initiator_4_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = arbitration_initiator_4_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = arbitration_initiator_4_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = arbitration_initiator_4_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = arbitration_initiator_4_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_4_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_4_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_4_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_4_preference value = -3.99 } } }
+			modifier = { factor = 16 check_variable = { which = arbitration_initiator_choice_5_preference value = 9.99 } }
+			modifier = { factor = 8 check_variable = { which = arbitration_initiator_choice_5_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 9.99 } } }
+			modifier = { factor = 4 check_variable = { which = arbitration_initiator_choice_5_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 3.99 } } }
+			modifier = { factor = 2 check_variable = { which = arbitration_initiator_choice_5_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 1.99 } } }
+			modifier = { factor = 1 check_variable = { which = arbitration_initiator_choice_5_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 0.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_choice_5_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -0.99 } } }
+			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_choice_5_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -1.99 } } }
+			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -3.99 } } }
 		}
     }
 	
@@ -3238,14 +3238,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = scoped_for_dispute_choice_4_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = scoped_for_dispute_choice_4_preference value = 3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = scoped_for_dispute_choice_4_preference value = 1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = scoped_for_dispute_choice_4_preference value = 0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = scoped_for_dispute_choice_4_preference value = -0.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = scoped_for_dispute_choice_4_preference value = -1.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = scoped_for_dispute_choice_4_preference value = -3.99 } NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = scoped_for_dispute_choice_4_preference value = -3.99 } } }
+			modifier = { factor = 16 check_variable = { which = arbitration_initiator_choice_5_preference value = 9.99 } }
+			modifier = { factor = 8 check_variable = { which = arbitration_initiator_choice_5_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 9.99 } } }
+			modifier = { factor = 4 check_variable = { which = arbitration_initiator_choice_5_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 3.99 } } }
+			modifier = { factor = 2 check_variable = { which = arbitration_initiator_choice_5_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 1.99 } } }
+			modifier = { factor = 1 check_variable = { which = arbitration_initiator_choice_5_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = 0.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_choice_5_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -0.99 } } }
+			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_choice_5_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -1.99 } } }
+			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_choice_5_preference value = -3.99 } } }
 		}
     }
 	
@@ -3471,8 +3471,8 @@ country_event = {	# Country Flag Wrapper cLEANUP
 
     immediate = {
 		any_country = {
-			set_variable = { which = scoped_for_dispute_choice_4_preference value = 0 }
-			set_variable = { which = arbitration_initiator_4_preference value = 0 }
+			set_variable = { which = arbitration_initiator_choice_5_preference value = 0 }
+			set_variable = { which = arbitration_initiator_choice_5_preference value = 0 }
 		}
 	} 
 

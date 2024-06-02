@@ -269,14 +269,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
+			modifier = { factor = 0.005 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
+			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
+			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
+			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
+			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
+			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
+			modifier = { factor = 16 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
 		}
     }
 	
@@ -309,7 +309,7 @@ country_event = {
 			factor = 0.3
 		}
     }
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -365,7 +365,7 @@ country_event = {
 					limit = {
 						has_country_flag = scoped_for_dispute_choice
 					}
-					#CLN = { country_event = 20099 }
+					CLN = { country_event = 20099 }
 					#CLN = { country_event = 20100 }
 					THIS = { random_country = { limit = { ai = yes } country_event = { id = 20100 days = 1 } set_country_flag = used } }
 					THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20100 days = 1 } set_country_flag = used } }
@@ -402,7 +402,7 @@ country_event = {
 					limit = {
 						has_country_flag = arbitration_initiator
 					}
-					#CLN = { country_event = 20099 }
+					CLN = { country_event = 20099 }
 					#CLN = { country_event = 20102 }
 					THIS = { random_country = { limit = { ai = yes } country_event = { id = 20102 days = 1 } set_country_flag = used } }
 					THIS = { random_country = { limit = { ai = yes NOT = { has_country_flag = used } } country_event = { id = 20102 days = 1 } set_country_flag = used } }
@@ -414,14 +414,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
+			modifier = { factor = 0.005 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
+			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
+			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
+			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
+			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
+			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
+			modifier = { factor = 16 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
 		}
     }
 	
@@ -492,7 +492,7 @@ country_event = {
 			factor = 0.3
 		}
     }
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -603,14 +603,14 @@ country_event = {
 		clr_global_flag = A
 		ai_chance = { 
 			factor = 0.5
-			modifier = { factor = 16 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
-			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
-			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
-			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
-			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
-			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
-			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
-			modifier = { factor = 0.005 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
+			modifier = { factor = 0.005 check_variable = { which = arbitration_initiator_3_preference value = 9.99 } }
+			modifier = { factor = 0.05 check_variable = { which = arbitration_initiator_3_preference value = 3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 9.99 } } }
+			modifier = { factor = 0.5 check_variable = { which = arbitration_initiator_3_preference value = 1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 3.99 } } }
+			modifier = { factor = 1 check_variable = { which = arbitration_initiator_3_preference value = 0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 1.99 } } }
+			modifier = { factor = 2 check_variable = { which = arbitration_initiator_3_preference value = -0.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = 0.99 } } }
+			modifier = { factor = 4 check_variable = { which = arbitration_initiator_3_preference value = -1.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -0.99 } } }
+			modifier = { factor = 8 check_variable = { which = arbitration_initiator_3_preference value = -3.99 } NOT = { check_variable = { which = arbitration_initiator_3_preference value = -1.99 } } }
+			modifier = { factor = 16 NOT = { check_variable = { which = arbitration_initiator_3_preference value = -3.99 } } }
 		}
     }
 	
@@ -716,7 +716,7 @@ country_event = {
 			factor = 0.3
 		}
     }
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {	# Coutry Flag Wrapper
@@ -764,8 +764,8 @@ country_event = {	# Country Flag Wrapper cLEANUP
 			clr_country_flag = arbitration_3_option_16
 			clr_country_flag = arbitration_3_option_18
 			clr_country_flag = arbitration_3_option_20
-			set_variable = { which = scoped_for_dispute_choice_preference value = 0 }
-			set_variable = { which = arbitration_initiator_preference value = 0 }
+			set_variable = { which = scoped_for_dispute_choice_3_preference value = 0 }
+			set_variable = { which = arbitration_initiator_3_preference value = 0 }
 		}
 	} 
 

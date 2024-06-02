@@ -3,7 +3,7 @@ political_decisions = {
     arbitrations_decision = {
         picture = dreams_of_empire
         potential = {
-			ai = no
+			#ai = no
 			any_core = {
 				NOT = {
 					owned_by = THIS
@@ -19,7 +19,13 @@ political_decisions = {
 			}
 			is_greater_power = no	
 			civilized = yes
-			
+			NOT = { has_country_modifier =  arbitration_cooldown }
+			NOT = {
+				AND = {
+					ai = yes
+					CLN = { has_country_modifier = arbitration_ai_buffer }
+				}
+			}
         }
 
         allow = {
@@ -27,6 +33,7 @@ political_decisions = {
 				NOT = {
 					owned_by = THIS
 					owner = { is_our_vassal = THIS }
+					continent = europe
 				}
 				OR = {
 					AND = {
@@ -40,12 +47,14 @@ political_decisions = {
 						}
 						civilized = yes
 						neighbour = THIS
+						NOT = { truce_with = THIS }
 						NOT = {
 							is_vassal = yes
 						}
 					}
 				}
 			}
+			is_vassal = no
 			war = no
 			NOT = { has_global_flag = arbitration_underway }
 			is_greater_power = no	
@@ -54,20 +63,33 @@ political_decisions = {
         }
 
         effect = {
-			all_core = {
-				add_province_modifier = { name = dispute_modifier duration = -1 }
+			arbitration_and_disputes_state_desc = {}
+			set_global_flag = A
+			random_country = {
+				limit = {
+					has_global_flag = A
+				}
+				THIS = {
+					all_core = {
+						add_province_modifier = { name = dispute_modifier duration = -1 }
+					}
+					set_country_flag = arbitration_initiator
+					set_global_flag = arbitration_underway
+					add_country_modifier = { name = arbitration_cooldown duration = 45 }
+					# the AI version is set in first CLN event, would prefer it was set here but too hard to scope
+					CLN = { add_country_modifier = { name = arbitration_ai_buffer duration = 200 } }
+					CLN = { country_event = 20051 }
+				}
 			}
-			set_country_flag = arbitration_initiator
-			set_global_flag = arbitration_underway
-			CLN = { country_event = 20051 }
+			clr_global_flag = A
         }
 		ai_will_do = { 
-		factor = 0.01
-			modifier = {	# Debug
-				factor = 0
+		factor = 0.01 # 0.5
+			#modifier = {	# Debug
+			#	factor = 0
 			#	tag = CLM
-				ai = yes
-			}
+			#	ai = yes
+			#}
 			modifier = {
 				factor = 1.5
 				any_core = {
@@ -80,7 +102,7 @@ political_decisions = {
 				factor = 2
 				any_greater_power = {
 					OR = {
-						relation = { who = THIS value = 300 }
+						relation = { who = THIS value = 200 }
 						alliance_with = THIS
 					}
 				}

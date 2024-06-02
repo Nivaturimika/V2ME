@@ -287,6 +287,10 @@ dispute_modifier = {
 	icon = 30
 }
 
+arbitration_ai_buffer = {
+	icon = 30
+}
+
 capital_city_modifier = {
 	icon = 32
 	assimilation_rate = 0.2
@@ -307,6 +311,14 @@ capital_construction = {
 
 secret_capital_construction = {
 	icon = 30
+}
+
+arbitration_ai_cooldown = {
+    icon = 19
+}
+
+arbitration_cooldown = {
+    icon = 8
 }
 
 # GFM Modifiers

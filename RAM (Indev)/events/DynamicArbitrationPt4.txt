@@ -117,6 +117,8 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_1_buffer_choice
+				CLN = { country_event = 20109 }
+				any_country = { limit = { has_country_flag = arbitration_initiator } leave_alliance = THIS }
 				any_country = {
 					limit = {
 						has_country_flag = gp_current_dispute	# Eventual Target
@@ -155,6 +157,7 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_1_buffer_choice
+				CLN = { country_event = 20109 }
 				any_country = {
 					limit = {
 						has_country_flag = gp_current_dispute
@@ -289,6 +292,8 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_2_buffer_choice
+				CLN = { country_event = 20109 }
+				any_country = { limit = { has_country_flag = scoped_for_dispute_choice } leave_alliance = THIS }
 				any_country = {
 					limit = {
 						has_country_flag = gp_current_dispute
@@ -327,6 +332,7 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_2_buffer_choice
+				CLN = { country_event = 20109 }
 				any_country = {
 					limit = {
 						has_country_flag = gp_current_dispute
@@ -418,6 +424,7 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_3_buffer_choice
+				CLN = { country_event = 20109 }
 				CLN = { country_event = 20140 } # Main Cleanup
 			}
 		}
@@ -533,6 +540,8 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_4_buffer_choice
+				CLN = { country_event = 20109 }
+				any_country = { limit = { has_country_flag = arbitration_initiator } leave_alliance = THIS }
 				any_country = {
 					limit = {
 						has_country_flag = gp_current_dispute
@@ -571,6 +580,7 @@ country_event = {
 			}
 			THIS = {
 				clr_global_flag = Arbitration_4_setup_4_buffer_choice
+				CLN = { country_event = 20109 }
 				any_country = {
 					limit = {
 						has_country_flag = arbitration_initiator

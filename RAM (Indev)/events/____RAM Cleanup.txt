@@ -51,7 +51,7 @@ country_event = {
 				has_country_flag = arbitration_war
 				war = no
 			}
-			CLN = { country_event = 20140 } }
+			CLN = { country_event = 20140 }
 		}
 		random_owned = {
 			limit = {
@@ -255,6 +255,17 @@ country_event = {
 			remove_country_modifier = divider_for_org_r
 			remove_country_modifier = divider_for_org_s
 			remove_country_modifier = divider_for_org_t
+		}
+		
+		any_country = {
+			limit = {
+				ai = no
+				has_country_modifier = arbitration_cooldown
+			}
+			change_variable = {
+				which = real_modifiers
+				value = 1
+			}
 		}
 		
 		any_country = {
@@ -9129,7 +9140,7 @@ country_event = {
 		}
 		
 		clr_global_flag = daily_cleanup_on
-		CLN = { country_event = { id = 2 days = 1 } }
+		#CLN = { country_event = { id = 2 days = 1 } }
 	}
 }
 

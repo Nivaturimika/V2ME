@@ -27,7 +27,6 @@ country_event = { # Triggered by event or decision
 		any_country = { limit = { has_country_flag = arbitration_initiator } set_country_flag = viewer }
 		any_country = {
 			limit = {
-				NOT = { has_country_flag = scoped_for_dispute }
 				NOT = { has_country_flag = arbitration_initiator }
 				OR = {
 					is_greater_power = no
@@ -35,12 +34,12 @@ country_event = { # Triggered by event or decision
 				}
 				any_owned_province = { 
 					has_province_modifier = dispute_modifier 
-					OR = {
-						any_neighbor_province = { 
-							owner = { has_country_flag = arbitration_initiator }
-						}
-						is_coastal = yes
-					}
+					#OR = {
+					#	any_neighbor_province = { # This means countries can counter-arbitrate claims which are not contiguous, to do properly wouldn mean moving condition to decision too. I think its ok for now.
+					#		owner = { has_country_flag = arbitration_initiator }
+					#	}
+					#	is_coastal = yes
+					#}
 				}
 			}
 			set_country_flag = due_for_slotting
@@ -316,7 +315,7 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -420,7 +419,7 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -554,7 +553,7 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -718,7 +717,7 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -912,7 +911,7 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }
 
 country_event = {
@@ -1136,5 +1135,5 @@ country_event = {
 			modifier = { factor = 0 has_global_flag = debug }
 		}
 	}
-	option = { name = "Debug" ai_chance = { factor = 0 } }
+	#option = { name = "Debug" ai_chance = { factor = 0 } }
 }

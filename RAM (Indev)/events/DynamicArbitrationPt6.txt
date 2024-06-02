@@ -12,6 +12,8 @@ country_event = {	# Country Flag Wrapper cLEANUP
 			clr_country_flag = gp_current_dispute
 			clr_country_flag = autonomous_region
 			
+			clr_country_flag = arbitration_war
+			
 		}
 		any_land_province = {
 			remove_province_modifier = dispute_modifier 

@@ -305,3 +305,14 @@ constitutional_empire = {
     appoint_ruling_party = yes
     flagType = monarchy
 }
+
+#empty_dictatorship = {
+    #which ideology of parties.
+#    communist = yes
+#    socialist = yes
+
+#    election = yes
+#    duration = 60
+#    appoint_ruling_party = yes
+#    flagType = empty
+#}
